@@ -9,11 +9,9 @@ class NN():
 	def __init__(self, operator_size):
 		super(NN, self).__init__()
 		self.operation_sequence = nn.Sequential(
-			nn.Linear(operator_size, operator_size*4),
+			nn.Linear(operator_size, operator_size*2),
 			nn.ReLU(),
-			nn.Linear(operator_size*4, operator_size*4),
-			nn.ReLU(),
-			nn.Linear(operator_size*4, 1)
+			nn.Linear(operator_size*2, 1)
 		)
 
 	def forward(self, x):
@@ -42,7 +40,7 @@ def main():
 	operator_size = 5
 	learning_rate = 0.01
 	batch_size = 16
-	num_epochs = 5
+	num_epochs = 2
 
 	# criando modelo de treinamento
 	model = NN(operator_size).to(device)
